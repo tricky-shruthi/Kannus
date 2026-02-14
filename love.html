@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Forever ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff4b7d, #ff9a9e);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Fade animation */
+.fade {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    color: white;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0); opacity:1;}
+    100% {transform: translateY(-800px); opacity:0;}
+}
+
+img {
+    width: 300px;
+    border-radius: 25px;
+    margin: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background: white;
+    color: #ff2e63;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff2e63;
+    color: white;
+}
+</style>
+</head>
+
+<body class="fade">
+
+<h1>💖 A Story Written By Destiny 💖</h1>
+
+<img id="mainImage" src="pic1.jpg">
+
+<h3 id="questionText">
+Do you remember the first day we met? ❤️
+</h3>
+
+<div id="options">
+    <button onclick="nextQuestion()">6th Feb</button>
+    <button onclick="nextQuestion()">5th Feb</button>
+    <button onclick="nextQuestion()">7th Feb</button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let step = 1;
+
+function nextQuestion() {
+    step++;
+
+    if(step == 2){
+        document.getElementById("mainImage").src = "pic2.jpg";
+        document.getElementById("questionText").innerHTML =
+        "Where did our first memory begin? 🌍💕";
+
+        document.getElementById("options").innerHTML =
+        `<button onclick="nextQuestion()">Velo Box</button>
+         <button onclick="nextQuestion()">La Chocolate Room</button>
+         <button onclick="nextQuestion()">Beach</button>`;
+    }
+
+    else if(step == 3){
+        document.getElementById("mainImage").src = "pic3.jpg";
+        document.getElementById("questionText").innerHTML =
+        "What was my first precious gift from you? 🎁❤️";
+
+        document.getElementById("options").innerHTML =
+        `<button onclick="nextQuestion()">Earrings</button>
+         <button onclick="nextQuestion()">Chocolate</button>
+         <button onclick="nextQuestion()">Chain</button>`;
+    }
+
+    else if(step == 4){
+        document.getElementById("mainImage").src = "pic4.jpg";
+        document.getElementById("questionText").innerHTML =
+        "In this lifetime and every lifetime… Will you be mine forever? 💍";
+
+        document.getElementById("options").innerHTML =
+        `<button onclick="finalMessage()">YES ❤️</button>
+         <button onclick="nextQuestion()">Maybe 😌</button>
+         <button onclick="nextQuestion()">No 😏</button>`;
+    }
+
+    else{
+        finalMessage();
+    }
+}
+
+function finalMessage(){
+    document.body.innerHTML =
+    "<h1 style='margin-top:100px;'>💍 You Are My Always & Forever 💍</h1>" +
+    "<p style='font-size:20px; padding:20px;'>No matter what happens…<br><br>" +
+    "You are my safest place 🤍<br><br>" +
+    "My favorite memory 📸<br><br>" +
+    "My greatest blessing 💖<br><br>" +
+    "And the love I choose everyday… Forever.</p>";
+}
+
+/* Floating hearts generator */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 500);
+</script>
+
+</body>
+</html>
